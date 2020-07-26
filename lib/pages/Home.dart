@@ -20,6 +20,9 @@ class _HomeState extends State<Home> {
     if(data["Country"]==null){
       data["Country"] = "Global";
     }
+    else if(data["Country"]=="United States of America"){
+      data["Country"] = "USA";
+    }
     NewConfirmed = "New Confirmed- " + data["NewConfirmed"];
     TotalConfirmed = "Total Confirmed-" + data["TotalConfirmed"];
     NewRecovered = "New Recovered- " + data["NewRecovered"];
