@@ -4,7 +4,8 @@ import "dart:convert";
 
 class Covid {
    Map data;
-
+   int i;
+   Map Cntry;
    String g_NewConfirmed;
    String g_TotalConfirmed;
    String g_NewDeaths;
@@ -23,18 +24,24 @@ class Covid {
    String NewRecovered;
    String TotalRecovered;
    String picture;
-   Covid({this.name, this.position, this.picture});
+   Covid({this.name});
    Future<void> getData() async{
      try{
        Response response = await get("https://api.covid19api.com/summary");
        data = jsonDecode(response.body);
-       Country = data["Countries"][position]["Country"];
-       TotalConfirmed = data["Countries"][position]["TotalConfirmed"].toString();
-       NewConfirmed = data["Countries"][position]["NewConfirmed"].toString();
-       NewDeaths = data["Countries"][position]["NewDeaths"].toString();
-       TotalDeaths= data["Countries"][position]["TotalDeaths"].toString();
-       NewRecovered = data["Countries"][position]["NewRecovered"].toString();
-       TotalRecovered = data["Countries"][position]["TotalRecovered"].toString();
+       for (i=0; i<data["Countries"].length; i++){
+         if (data["Countries"][i]["Country"] == name){
+           Cntry = data["Countries"][i];
+         }
+       }
+       Country = Cntry["Country"];
+       TotalConfirmed = Cntry["TotalConfirmed"].toString();
+       NewConfirmed = Cntry["NewConfirmed"].toString();
+       NewDeaths = Cntry["NewDeaths"].toString();
+       TotalDeaths= Cntry["TotalDeaths"].toString();
+       NewRecovered = Cntry["NewRecovered"].toString();
+       TotalRecovered = Cntry["TotalRecovered"].toString();
+
 
        g_NewConfirmed = data["Global"]["NewConfirmed"].toString();
        g_TotalConfirmed = data["Global"]["TotalConfirmed"].toString();

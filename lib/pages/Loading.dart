@@ -10,7 +10,7 @@ class Loading extends StatefulWidget {
 
 class _LoadingState extends State<Loading> {
   void getData() async{
-    Covid data = Covid(position: 76, name: "India", picture: "india.png");
+    Covid data = Covid(name: "India");
     await data.getData();
     Navigator.pushNamed(context, "/home", arguments: {
       "TotalConfirmed": data.g_TotalConfirmed,
