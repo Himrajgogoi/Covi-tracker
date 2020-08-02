@@ -18,7 +18,8 @@ class _LoadingState extends State<Loading> {
       "TotalRecovered": data.g_TotalRecovered,
       "NewRecovered": data.g_TotalRecovered,
       "TotalDeaths": data.g_TotalDeaths,
-      "NewDeaths": data.g_NewDeaths
+      "NewDeaths": data.g_NewDeaths,
+      "error": data.error
     });
   }
   void initState() {

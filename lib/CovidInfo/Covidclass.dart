@@ -23,7 +23,7 @@ class Covid {
    String TotalDeaths;
    String NewRecovered;
    String TotalRecovered;
-   String picture;
+   String error;
    Covid({this.name});
    Future<void> getData() async{
      try{
@@ -32,15 +32,27 @@ class Covid {
        for (i=0; i<data["Countries"].length; i++){
          if (data["Countries"][i]["Country"] == name){
            Cntry = data["Countries"][i];
+
+           Country = Cntry["Country"];
+           TotalConfirmed = Cntry["TotalConfirmed"].toString();
+           NewConfirmed = Cntry["NewConfirmed"].toString();
+           NewDeaths = Cntry["NewDeaths"].toString();
+           TotalDeaths= Cntry["TotalDeaths"].toString();
+           NewRecovered = Cntry["NewRecovered"].toString();
+           TotalRecovered = Cntry["TotalRecovered"].toString();
+           break;
+         }
+         else{
+           Country = "Spelling error";
+           TotalConfirmed = " ";
+           NewConfirmed = " " ;
+           NewDeaths =  " ";
+           TotalDeaths=  " ";
+           NewRecovered = " ";
+           TotalRecovered =  " ";
          }
        }
-       Country = Cntry["Country"];
-       TotalConfirmed = Cntry["TotalConfirmed"].toString();
-       NewConfirmed = Cntry["NewConfirmed"].toString();
-       NewDeaths = Cntry["NewDeaths"].toString();
-       TotalDeaths= Cntry["TotalDeaths"].toString();
-       NewRecovered = Cntry["NewRecovered"].toString();
-       TotalRecovered = Cntry["TotalRecovered"].toString();
+
 
 
        g_NewConfirmed = data["Global"]["NewConfirmed"].toString();
@@ -52,7 +64,7 @@ class Covid {
 
      }
      catch(e){
-       print("Error: $e");
+       error = "An error occured try checking your internet connection";
      }
 }
 }

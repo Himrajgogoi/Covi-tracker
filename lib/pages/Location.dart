@@ -31,7 +31,8 @@ class _LocationState extends State<Location> {
        "TotalDeaths": data.TotalDeaths,
        "NewDeaths": data.NewDeaths,
        "NewRecovered": data.NewRecovered,
-       "TotalRecovered": data.TotalRecovered
+       "TotalRecovered": data.TotalRecovered,
+       "error": data.error
      });
    }
   @override
