@@ -26,6 +26,8 @@ dependencies:
   http: ^0.12.1
   intl: ^0.16.1
   flutter_spinkit: ^4.1.2
+  connectivity: ^0.4.9
+  double_back_to_close_app: ^1.2.0
 
 
 
